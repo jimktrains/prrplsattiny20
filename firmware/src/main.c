@@ -88,6 +88,17 @@ void light_led(uint8_t light) {
   DDRA |= (sink != 2 && sink != 0) << sink;
 }
 
+void update_lights() {
+  if (cur_light_bit == 6) {
+    cur_light_bit = 0;
+  } else {
+    cur_light_bit += 1;
+  }
+  if (lightson & (1 << cur_light_bit)) {
+    light_led(lightidx[cur_light_bit]);
+  }
+}
+
 int main(void) {
   // Init LEDs Off
   light_led(ALLOFF);
@@ -100,20 +111,20 @@ int main(void) {
   // Set DDR for Rx and Tx Pins
   DDRB |= ((1 << RX_PIN) | (1 << TX_PIN));
 
+  // I'm looping instead of using an interrupt because at 300 baud @ 4x
+  // subsamples I only have something like 6600 cycles.
+  //     8000000/4/300
+  //     6666.66666666666666666666
+  // At 1200 baud that's only around 1600 cycles.
+  //
+  // Since before writing any of this I was unsure of exactly how long the
+  // soft uart and LED charliplexing routines will take, I decided to just
+  // put everything into one large loop in order to not have the overhead
+  // of jumping to and out of the interrupt. It's probably a bit of a
+  // needless "optimization", but it's what I have and have tested.
   while (1) {
-    // Check if timer output compare was set.
-    if (TIFR & (1 << OCF0A)) {
-      // Clear the compare match flag.
-      TIFR |= (1 << OCF0A);
-
-      if (cur_light_bit == 6) {
-        cur_light_bit = 0;
-      } else {
-        cur_light_bit += 1;
-      }
-      if (lightson & (1 << cur_light_bit)) {
-        light_led(lightidx[cur_light_bit]);
-      }
+    if (timer_tick()) {
+      update_lights();
 
       listen();
       send();

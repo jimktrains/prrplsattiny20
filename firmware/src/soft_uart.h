@@ -95,3 +95,12 @@ void setup_timer() {
   TCCR0B |= (1 << CS02);
 }
 
+uint8_t timer_tick() {
+    // Check if timer output compare was set.
+    if (TIFR & (1 << OCF0A)) {
+      // Clear the compare match flag.
+      TIFR |= (1 << OCF0A);
+      return 1;
+    }
+    return 0;
+}
