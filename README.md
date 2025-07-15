@@ -23,7 +23,7 @@ is retransmitted similar to how WS2812b / NeoPixels work. A packet starts with
 an ASCII '!' (0x41) followed a sequence of 'S' (0x53) for Stop, 'A' (0x41) for
 Approach, and 'C' (0x43) for Clear, 'O' (0x4F) for all lights off, and anything
 above 0x80 to control the individual lights. (Invalid characters will turn
-all lights off.)
+all lights off.) I'm currently planning to use a software UART at 300baud.
 
 I'm still waiting for the assembled boards. (I am using an 
 [ATTiny20](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8235-8-bit-AVR-Microcontroller-ATtiny20_Datasheet.pdf)
