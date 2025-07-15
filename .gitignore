@@ -1,0 +1,93 @@
+# https://github.com/jharoian-mchp/MPLAB-X-gitignore/blob/main/X.gitignore
+# Set up for Microchip/MPLAB X development
+# MPLAB X .gitignore New File generation
+#
+# Needs to be located in the project folder
+# project.X/.gitignore
+#
+# John Haroian
+# Greg Mrozek
+#
+# Updated May 30, 2025
+
+# MPLAB X IDE specific
+~*.*
+/build/
+/debug/
+/dist/
+/disassembly/
+/.generated_files/
+/nbproject/private/
+/nbproject/*.mk
+/nbproject/*.bash
+/nbproject/Makefile-genesis.properties
+/nbproject/queuelogs/
+
+# MCC specific
+*mc3.bak*
+*.bak*/
+
+# Large Files
+*.zip
+
+
+
+
+
+# https://github.com/github/gitignore/blob/main/C.gitignore
+# Prerequisites
+*.d
+
+# Object files
+*.o
+*.ko
+*.obj
+*.elf
+
+# Linker output
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Libraries
+*.lib
+*.a
+*.la
+*.lo
+
+# Shared objects (inc. Windows DLLs)
+*.dll
+*.so
+*.so.*
+*.dylib
+
+# Executables
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+
+# Debug files
+*.dSYM/
+*.su
+*.idb
+*.pdb
+
+# Kernel Module Compile Results
+*.mod*
+*.cmd
+.tmp_versions/
+modules.order
+Module.symvers
+Mkfile.old
+dkms.conf
+
+# debug information files
+*.dwo
+
