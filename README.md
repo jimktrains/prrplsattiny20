@@ -6,14 +6,14 @@ A panel of my design with a 1mm grid shown.
 
 The Pennsylvania Railroad (PRR), almost uniquly among railroads, used
 Position Light Signals (PLS) 
-[https://en.wikipedia.org/wiki/North_American_railroad_signals#Position_light_signals]([1])
-[https://railroadsignals.us/signals/pl/pl.htm]([2]). (The Norfolk & Western
+[[1]](https://en.wikipedia.org/wiki/North_American_railroad_signals#Position_light_signals)
+[[2]](https://railroadsignals.us/signals/pl/pl.htm). (The Norfolk & Western
 used Colored Position Lights (CPL) 
-[https://railroadsignals.us/signals/pl/pl.htm]([2]) which were similar.)
+[[2]]([https://railroadsignals.us/signals/pl/pl.htm) which were similar.)
 
-I model [https://en.wikipedia.org/wiki/N_scale](N-Scale) which is 1:160
+I model [N-Scale](https://en.wikipedia.org/wiki/N_scale) which is 1:160
 scale. From scans of PRR plans
-[http://prr.railfan.net/signalstandards/standards.cgi?plan=S-401-D&frame=YES&sortdir=up&sortby=1&rr=all]([3])
+[[3]](http://prr.railfan.net/signalstandards/standards.cgi?plan=S-401-D&frame=YES&sortdir=up&sortby=1&rr=all)
 the diameter of the signal is 4'4", which becomes 0.325" (8.255mm) for the
 scale model.
 
