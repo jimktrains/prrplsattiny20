@@ -1,0 +1,39 @@
+{
+    "layout": {
+        "hspace": "2mm",
+        "vspace": "2mm",
+        "hbackbone": "2mm",
+        "vbackbone": "1mm",
+        "rows": "5",
+        "cols": "5"
+    },
+    "tabs": {
+        "type": "corner",
+        "width": "1mm"
+    },
+    "framing": {
+        "type": "tightframe",
+        "width": "3mm"
+    },
+    "tooling": {
+        "type": "3hole",
+        "hoffset": "3.5mm",
+        "voffset": "3.5mm"
+    },
+    "fiducials": {
+        "type": "3fid",
+        "hoffset": "3mm",
+        "voffset": "15mm"
+    },
+    "text": {
+        "type": "simple",
+        "voffset": "2mm",
+        "width": "1mm",
+        "height": "1mm",
+        "thickness": "0.1mm",
+        "text": "PRR PLS v3    JSK    2025-07-05    WayWayWay"
+    },
+    "post": {
+        "millradius": "1mm"
+    }
+}
