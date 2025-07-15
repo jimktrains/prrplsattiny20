@@ -25,8 +25,10 @@ Approach, and 'C' (0x43) for Clear, 'O' (0x4F) for all lights off, and anything
 above 0x80 to control the individual lights. (Invalid characters will turn
 all lights off.)
 
-I'm still waiting for the assembled boards. (I am using an ATTiny20 in a 
-(WLCSP)[https://en.wikipedia.org/wiki/Wafer-level_packaging] package 
+I'm still waiting for the assembled boards. (I am using an 
+[ATTiny20](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8235-8-bit-AVR-Microcontroller-ATtiny20_Datasheet.pdf)
+in a 
+[WLCSP](https://en.wikipedia.org/wiki/Wafer-level_packaging) package 
 (1.56mm&times;1.4mm) with 0.4mm balls, and I'm not sure I can solder that
 at my current skill level.) My current plan is to use 38 gauge
 (40mil (0.1007mm) diameter) enameled wire to wire the signals.
