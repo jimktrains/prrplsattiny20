@@ -135,6 +135,8 @@ int main(void) {
             lightson = APPR_ASP;
           } else if (last_recv == 'C') {
             lightson = CLEAR_ASP;
+          } else if (last_recv >= 0x80) {
+            lightson = last_recv;
           } else {
             lightson = ALLOFF;
           }
