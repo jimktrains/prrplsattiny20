@@ -6,7 +6,7 @@ from time import sleep
 # configure the serial connections (the parameters differs on the device you are connecting to)
 ser = serial.Serial(
     port='/dev/ttyUSB0',
-    baudrate=300,
+    baudrate=600,
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,

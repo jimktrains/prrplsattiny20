@@ -12,7 +12,9 @@
 #include <avr/pgmspace.h>
 #include <stdint.h>
 
-#define SOFT_BAUD 300
+// #define F_CPU 8000000
+
+#define SOFT_BAUD 4800
 #define RX_PIN PB0
 #define TX_PIN PB1
 #include "./soft_uart.h"
@@ -37,12 +39,12 @@
  * Use the internal pull up resistors to power them.
  */
 #define STOP_1 0x65
-#define STOP_2 0x25
-#define APPR_1 0x62
-#define APPR_2 0x52
-#define CLEAR_1 0x26
+#define STOP_2 0x62
+#define APPR_1 0x26
+#define APPR_2 0x25
+#define CLEAR_1 0x52
 #define CLEAR_2 0x56
-#define CENTER 0x40
+#define CENTER 0x04
 #define ALLOFF 0x00
 
 #define STOP_1_BIT 0
@@ -109,7 +111,9 @@ int main(void) {
   setup_timer(SOFT_BAUD);
 
   // Set DDR for Rx and Tx Pins
-  DDRB |= ((1 << RX_PIN) | (1 << TX_PIN));
+  DDRB |= ((0 << RX_PIN) | (1 << TX_PIN));
+
+  lightson = STOP_ASP;
 
   // I'm looping instead of using an interrupt because at 300 baud @ 4x
   // subsamples I only have something like 6600 cycles.
@@ -124,6 +128,7 @@ int main(void) {
   // needless "optimization", but it's what I have and have tested.
   while (1) {
     if (timer_tick()) {
+      // PORTB ^= (1 << TX_PIN);
       update_lights();
 
       listen();
@@ -156,7 +161,7 @@ int main(void) {
             last_recv_packet_start = 1;
           }
           new_next_to_tx = 1;
-          next_to_tx = last_recv;
+          next_to_tx = 0xaa; // last_recv;
         }
       }
     }

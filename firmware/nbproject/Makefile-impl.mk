@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=prrplsattiny20.X
+PROJECTNAME=firmware
 
 # Active Configuration
 DEFAULTCONF=default

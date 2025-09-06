@@ -97,3 +97,4 @@ dkms.conf
 # debug information files
 *.dwo
 
+/firmware/dist/

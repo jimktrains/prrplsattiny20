@@ -2780,7 +2780,7 @@
 		)
 		(uuid "8677578b-b608-472a-9d03-eb4a117507a7")
 	)
-	(label "B"
+	(label "PB2"
 		(at 182.88 90.17 0)
 		(effects
 			(font
@@ -2800,7 +2800,7 @@
 		)
 		(uuid "9f0e6752-6e03-4929-9951-b4edf3305df1")
 	)
-	(label "C"
+	(label "PA5"
 		(at 203.2 106.68 0)
 		(effects
 			(font
@@ -2820,7 +2820,7 @@
 		)
 		(uuid "cc85bfeb-6b99-4423-b159-d3690bea5a21")
 	)
-	(label "C"
+	(label "PA5"
 		(at 165.1 114.3 0)
 		(effects
 			(font
@@ -2850,7 +2850,7 @@
 		)
 		(uuid "ee24ebc6-aaac-4175-bdaa-13a7af7ef500")
 	)
-	(label "A"
+	(label "PA6"
 		(at 165.1 116.84 0)
 		(effects
 			(font
@@ -2870,7 +2870,7 @@
 		)
 		(uuid "fd78eb84-764e-4376-ac31-bb7413934eb4")
 	)
-	(label "A"
+	(label "PA6"
 		(at 193.04 105.41 0)
 		(effects
 			(font
