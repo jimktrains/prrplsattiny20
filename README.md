@@ -30,6 +30,13 @@ Approach, and 'C' (0x43) for Clear, 'O' (0x4F) for all lights off, and anything
 above 0x80 to control the individual lights. (Invalid characters will turn
 all lights off.) I'm currently planning to use a software UART at 300baud.
 
+
+
+Schematics / PCB
+================
+
+### General Notes
+
 I am using an 
 [ATTiny20](https://ww1.microchip.com/downloads/en/DeviceDoc/Atmel-8235-8-bit-AVR-Microcontroller-ATtiny20_Datasheet.pdf)
 in a 
@@ -58,12 +65,24 @@ arranging the lights in a sensible order I am able to have them on with
 100% duty cycle for the 3 basic aspects these display (Stop, Clear, and
 Approach). For those aspects I think the current brightness is adequate.
 
+### PCB Notes
 
-Schematics / PCB
-================
-
-The design is fairly simple, and using 4 layers (Signal, +5V+Minimal Signal,
+The PCB design is fairly simple, and using 4 layers (Signal, +5V+Minimal Signal,
 GND, Signal) made routing easier.
+
+To avoid using via-in-pads (and being charged accordingly), there are 3 pins
+(balls?) that aren't used. If they had been used, each LED could have been
+directly connected to the μC. As such, I was able to control the LEDs
+individually by charlieplexing them.
+
+I used a 1.27mm pitch SOIC chip clip as my connectorless connector. (I did
+manage to make the through-holes a little too small, so it doesn't attach
+as securly as I would have liked.) Eventually I just soldered some THT
+resistor legs to these to connect to a breadboard for some of the signal
+heads.
+
+When panalized, I added some traces that I can use to interconnect columns
+for testing.
 
 ### Individual Schematic
 
