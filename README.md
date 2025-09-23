@@ -1,8 +1,8 @@
 PRR Position Light Signals based on an ATTiny20
 -----------------------------------------------
 ![Thumb for scale](thumb-for-scale.jpg)
-[![In The Dark](in-the-dark.png)](in-the-dark.mp4)
-[![Close Up](closeup.png)](closeup.mp4)
+[![In The Dark](in-the-dark.gif)](in-the-dark.mp4)
+[![Close Up](closeup.gif)](closeup.mp4)
 
 The Pennsylvania Railroad (PRR), almost uniquly among railroads, used
 Position Light Signals (PLS) 
