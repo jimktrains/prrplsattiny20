@@ -6,8 +6,8 @@ Thumb for scale.
 
 In Action!
 
-[![In The Dark](in-the-dark.gif)](in-the-dark.mp4)
-[![Close Up](closeup.gif)](closeup.mp4)
+![In The Dark](in-the-dark.gif)
+![Close Up](closeup.gif)
 
 The Pennsylvania Railroad (PRR), almost uniquly among railroads, used
 Position Light Signals (PLS) 
