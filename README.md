@@ -1,6 +1,9 @@
 PRR Position Light Signals based on an ATTiny20
 -----------------------------------------------
+Thumb for scale.
 ![Thumb for scale](thumb-for-scale.jpg)
+
+In Action!
 [![In The Dark](in-the-dark.gif)](in-the-dark.mp4)
 [![Close Up](closeup.gif)](closeup.mp4)
 
