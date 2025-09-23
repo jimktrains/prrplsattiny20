@@ -36,6 +36,7 @@ at my current skill level.) My current plan is to use 38 gauge
 Here is how I test and program these modules. The Arduino is running [this
 sketch](tpi_programmer/) from (Junk +
 Arduino)[https://junkplusarduino.blogspot.com/p/attiny10-resources.html]. I
-added a software serial console to it.
+added a software serial console to it. The FT232RL in the schematic is 
+actually a breakout board that provides the +5V.
 
 ![Programming and Testing Schematic](prog_test_schem.png)
