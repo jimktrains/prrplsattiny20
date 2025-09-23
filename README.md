@@ -38,7 +38,9 @@ in a
 at my current skill level.) I'm just bemused at it's physical size, even if
 it only has 128 bytes of RAM. It fits perfectly in the area available,
 allows for components on a single side, and has enough I/O to control
-the LEDs individually. In order to avoid having to place a resistor per
+the LEDs individually.
+
+In order to avoid having to place a resistor per
 LED, I'm using the pull-up resistors in the microcontroller. Since these
 are large-resistance resistors, it limits the brightness of the LEDs. While
 the pull-up resistors aren't any specific resistance and can be pretty
@@ -56,12 +58,40 @@ arranging the lights in a sensible order I am able to have them on with
 100% duty cycle for the 3 basic aspects these display (Stop, Clear, and
 Approach). For those aspects I think the current brightness is adequate.
 
+The design is fairly simple, and using 4 layers (Signal, +5V+Minimal Signal,
+GND, Signal) made routing easier.
+
+Schematics / PCB
+================
+
+### Individual Schematic
+
+![Individual Schematic](schematic.png)
+
+### Front Copper
+
+![F.Cu](f.cu.png)
+
+### Inner 1 Copper
+
+![In1.Cu](in1.cu.png)
+
+### Inner 2 Copper
+
+![In2.Cu](in2.cu.png)
+
+### Back Copper
+
+![B.Cu](b.cu.png)
+
+Programming and Testing
+========================
 
 Here is how I test and program these modules. The Arduino is running [this
 sketch](tpi_programmer/) from (Junk +
 Arduino)[https://junkplusarduino.blogspot.com/p/attiny10-resources.html]. I
-added a software serial console to it. The FT232RL in the schematic is 
-actually a breakout board that provides the +5V.
+added a software serial console to it to make testing easier. The FT232RL in
+the schematic is actually a breakout board that provides the +5V.
 
 ![Programming and Testing Schematic](prog_test_schem.png)
 
