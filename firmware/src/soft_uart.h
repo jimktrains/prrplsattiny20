@@ -118,14 +118,14 @@ void setup_timer() {
   //
   // RTFM kids.
 
-  const uint32_t oc = F_CPU / 64 / SOFT_BAUD / SUBSAMPLE;
+  // The -1 is because it was a little too off otherwise.
+  const uint32_t oc = (F_CPU / 64 / SOFT_BAUD / SUBSAMPLE) - 1;
   _Static_assert(oc < 256, "SOFT_BAUD too high");
   _Static_assert(oc != 0, "SOFT_BAUD too low");
   OCR0A = (uint8_t)(oc & 0xff);
   TCNT0 = 0;
-  // Wave Form Generation Mode 2: CTC ( COM0A0=1 COM0A1=0)
-  // Toggle OC0A/PB2 on compare match (WGM01=1)
-  TCCR0A |= (1 << COM0A0) | (0 << WGM01);
+  // Wave Form Generation Mode 2: CTC (WGM01=1)
+  TCCR0A |= (1 << WGM01);
   // CS02 CS01 CS00 Description
   // 0    0    0 No clock source (Timer/Counter stopped)
   // 0    0    1 clkI/O/(No prescaling)

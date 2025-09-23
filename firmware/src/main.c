@@ -69,24 +69,28 @@
 const uint8_t PROGMEM lightidx[7] = {STOP_1,  STOP_2,  APPR_1, APPR_2,
                                      CLEAR_1, CLEAR_2, CENTER};
 
-#define INIT_SEQ_LEN 10
+#define INIT_SEQ_LEN 3
 const uint8_t PROGMEM init_seq[INIT_SEQ_LEN] = {
-    STOP_ASP,     APPR_ASP,    CLEAR_ASP,   STOP_2_FLAG,  APPR_1_FLAG,
-    CLEAR_2_FLAG, STOP_1_FLAG, APPR_2_FLAG, CLEAR_1_FLAG, CENTER_FLAG};
+    STOP_ASP,     APPR_ASP,    CLEAR_ASP};
 
 uint8_t lightson = ALLOFF;
+uint8_t prevlightson = ALLOFF;
 uint8_t cur_light_bit = 6;
 
-void light_led(uint8_t light) {
-  uint8_t source = 0x0f & light;
-  uint8_t sink = (0xf0 & light) >> 4;
-
+void led_all_off() {
   // Put All LEDs into z state
   // i.e. input with no pull-up
   PUEA &= ~EP_PORTA;
   PUEB &= ~EP_PORTB;
   DDRA &= ~EP_PORTA;
   DDRB &= ~EP_PORTB;
+}
+
+void light_led(uint8_t light) {
+  uint8_t source = 0x0f & light;
+  uint8_t sink = (0xf0 & light) >> 4;
+
+  led_all_off();
 
   PUEB |= (source == 2) << 2;
   PUEA |= (source != 2 && source != 0) << source;
@@ -96,14 +100,40 @@ void light_led(uint8_t light) {
 }
 
 void update_lights() {
-  if (cur_light_bit == 6) {
-    cur_light_bit = 0;
+  if (lightson == CLEAR_ASP) {
+    if (prevlightson != lightson) {
+      led_all_off();
+      PUEB |= (1 << 2);
+      PUEA |= (1 << 6) | (1 << 4);
+
+      DDRA |= (1 << 5);
+    }
+  } else if (lightson == APPR_ASP) {
+    if (prevlightson != lightson) {
+      led_all_off();
+      PUEA |= (1 << 6) | (1 << 5) | (1 << 4);
+
+      DDRB |= (1 << 2);
+    }
+  } else if (lightson == STOP_ASP) {
+    if (prevlightson != lightson) {
+      led_all_off();
+      PUEB |= (1 << 2);
+      PUEA |= (1 << 5) | (1 << 4);
+
+      DDRA |= (1 << 6);
+    }
   } else {
-    cur_light_bit += 1;
+    if (cur_light_bit == 6) {
+      cur_light_bit = 0;
+    } else {
+      cur_light_bit += 1;
+    }
+    if (lightson & (1 << cur_light_bit)) {
+      light_led(lightidx[cur_light_bit]);
+    }
   }
-  if (lightson & (1 << cur_light_bit)) {
-    light_led(lightidx[cur_light_bit]);
-  }
+  prevlightson = lightson;
 }
 
 #define TOGGLE_TX_ON_TIMER 0
@@ -137,17 +167,15 @@ int main(void) {
   // of jumping to and out of the interrupt. It's probably a bit of a
   // needless "optimization", but it's what I have and have tested.
 
-  if (CYCLE_ASPECTS_ONLY) {
-    uint16_t cycle_count = 0;
-    uint16_t cycle_stage = 0;
-  }
+  uint16_t cycle_count = 0;
+  uint16_t cycle_stage = 0;
   while (1) {
     if (timer_tick()) {
       update_lights();
 
       if (CYCLE_ASPECTS_ONLY) {
         cycle_count++;
-        if ((x & 0x1ff) == 0x1ff) {
+        if ((cycle_count & 0xff) == 0xff) {
           cycle_stage++;
           lightson = init_seq[cycle_stage % INIT_SEQ_LEN];
         }

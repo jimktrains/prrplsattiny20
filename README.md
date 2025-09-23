@@ -35,8 +35,27 @@ I am using an
 in a 
 [WLCSP](https://en.wikipedia.org/wiki/Wafer-level_packaging) package 
 (1.56mm&times;1.4mm) with 0.4mm balls, and I'm not sure I can solder that
-at my current skill level.) My current plan is to use 38 gauge
-(40mil (0.1007mm) diameter) enameled wire to wire the signals.
+at my current skill level.) I'm just bemused at it's physical size, even if
+it only has 128 bytes of RAM. It fits perfectly in the area available,
+allows for components on a single side, and has enough I/O to control
+the LEDs individually. In order to avoid having to place a resistor per
+LED, I'm using the pull-up resistors in the microcontroller. Since these
+are large-resistance resistors, it limits the brightness of the LEDs. While
+the pull-up resistors aren't any specific resistance and can be pretty
+variable, the ones within a single chip should be pretty similar. This may
+mean that signals visibility near each other may be of different brightness,
+but so far it doesn't appear to be a noticeable issue.
+
+The limited brightness is a potential problem, but I'm going to try up the
+effective PWM duty cycle. If each light is updated sequentually at the
+frequency at which the RX pin is sampled spread over the 7 lights -- 
+currently 1200Hz with a 1/7 (14%) duty cycle. Because the LEDs are
+charliplexed I am limited in which LEDs I could turn on simultaneously.
+However, because I separated out the center light and I think lucked into
+arranging the lights in a sensible order I am able to have them on with
+100% duty cycle for the 3 basic aspects these display (Stop, Clear, and
+Approach). For those aspects I think the current brightness is adequate.
+
 
 Here is how I test and program these modules. The Arduino is running [this
 sketch](tpi_programmer/) from (Junk +
@@ -45,3 +64,6 @@ added a software serial console to it. The FT232RL in the schematic is
 actually a breakout board that provides the +5V.
 
 ![Programming and Testing Schematic](prog_test_schem.png)
+
+My next step is to use 38 gauge (40mil (0.1007mm) diameter) enameled wire to
+wire the signals into a wayside signal on a post, and then a signal bridge.

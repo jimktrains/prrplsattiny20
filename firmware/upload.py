@@ -31,7 +31,7 @@ while x != '>':
     print(x, end="")
 print("")
 
-if False:
+if True:
     print("** Getting ID")
     ser.write(b'i\n')
     x = None
@@ -40,7 +40,6 @@ if False:
         if len(x) != 0:
             print(x, end="", flush=True)
 
-if False:
     ser.write(b'u\n')
     x = None
     while x != '\n':
@@ -78,8 +77,9 @@ def console(win):
     win.clear()                
     while 1:          
         try:
+            x = []
             x = ser.read(1).decode('ascii')
-        except e:
+        except Exception as e:
             x = "".join([f"\\x{xx:02x}" for xx in x])
 
         if len(x) != 0:
