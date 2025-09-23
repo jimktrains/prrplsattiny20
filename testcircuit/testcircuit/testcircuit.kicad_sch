@@ -5,6 +5,592 @@
 	(uuid "bd96de00-d7fe-4095-9be4-fc1fde628ce9")
 	(paper "A4")
 	(lib_symbols
+		(symbol "Conn_01x05_Socket_1"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J1003"
+				(at 1.27 1.2701 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Testing Position 1 Socket"
+				(at 1.27 -1.2699 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x05, script generated"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x05_Socket_1_1_1"
+				(polyline
+					(pts
+						(xy -1.27 5.08) (xy -0.508 5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.54) (xy -0.508 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -0.508 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy -0.508 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -5.08) (xy -0.508 -5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 4.572)
+					(mid -0.5058 5.08)
+					(end 0 5.588)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 2.032)
+					(mid -0.5058 2.54)
+					(end 0 3.048)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -0.508)
+					(mid -0.5058 0)
+					(end 0 0.508)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -3.048)
+					(mid -0.5058 -2.54)
+					(end 0 -2.032)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -5.588)
+					(mid -0.5058 -5.08)
+					(end 0 -4.572)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Conn_01x05_Socket_2"
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J1002"
+				(at 1.27 1.2701 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Testing Position 2 Socket"
+				(at 1.27 -1.2699 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Generic connector, single row, 01x05, script generated"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_locked" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "ki_keywords" "connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "Connector*:*_1x??_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_01x05_Socket_2_1_1"
+				(polyline
+					(pts
+						(xy -1.27 5.08) (xy -0.508 5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 2.54) (xy -0.508 2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy -0.508 0)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -2.54) (xy -0.508 -2.54)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -5.08) (xy -0.508 -5.08)
+					)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 4.572)
+					(mid -0.5058 5.08)
+					(end 0 5.588)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 2.032)
+					(mid -0.5058 2.54)
+					(end 0 3.048)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -0.508)
+					(mid -0.5058 0)
+					(end 0 0.508)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -3.048)
+					(mid -0.5058 -2.54)
+					(end 0 -2.032)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0 -5.588)
+					(mid -0.5058 -5.08)
+					(end 0 -4.572)
+					(stroke
+						(width 0.1524)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 5.08 0)
+					(length 3.81)
+					(name "Pin_1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 3.81)
+					(name "Pin_2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 3.81)
+					(name "Pin_3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 -2.54 0)
+					(length 3.81)
+					(name "Pin_4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin no_connect line
+					(at -5.08 -5.08 0)
+					(length 3.81)
+					(name "Pin_5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:Conn_01x05_Socket"
 			(pin_names
 				(offset 1.016)
@@ -1011,6 +1597,192 @@
 						)
 					)
 					(number "12"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Jumper:SolderJumper_2_Open"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "JP"
+				(at 0 2.032 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SolderJumper_2_Open"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Solder Jumper, 2-pole, open"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "solder jumper SPST"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "SolderJumper*Open*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SolderJumper_2_Open_0_1"
+				(polyline
+					(pts
+						(xy -0.254 1.016) (xy -0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start -0.254 -1.016)
+					(mid -1.2656 0)
+					(end -0.254 1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(arc
+					(start 0.254 1.016)
+					(mid 1.2656 0)
+					(end 0.254 -1.016)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.254 1.016) (xy 0.254 -1.016)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "SolderJumper_2_Open_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -2183,12 +2955,6 @@
 		(uuid "381cd7fb-a82f-49a1-88fd-448485e5def5")
 	)
 	(junction
-		(at 181.61 80.01)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "5a32e5ad-1d94-4cff-b68a-f04d26ea1970")
-	)
-	(junction
 		(at 99.06 66.04)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2199,12 +2965,6 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "87d00fce-a518-4f5e-b2f1-f89f1fa8be72")
-	)
-	(junction
-		(at 180.34 82.55)
-		(diameter 0)
-		(color 0 0 0 0)
-		(uuid "a5b90250-66e5-42af-82a3-3daada7e3c16")
 	)
 	(junction
 		(at 101.6 116.84)
@@ -2219,6 +2979,12 @@
 		(uuid "b8dbc4b0-c381-4269-a961-70c0f035f158")
 	)
 	(junction
+		(at 180.34 82.55)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "bb6ec019-1083-4dc5-8fd5-8ad0ba79a072")
+	)
+	(junction
 		(at 99.06 116.84)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2229,6 +2995,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "d61a55f1-aefe-49d0-b29f-4f4e505ea149")
+	)
+	(junction
+		(at 181.61 80.01)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e1c04bd9-66eb-44b6-acab-5de6a0ebce9b")
 	)
 	(junction
 		(at 127 105.41)
@@ -2242,23 +3014,13 @@
 	)
 	(wire
 		(pts
-			(xy 193.04 80.01) (xy 181.61 80.01)
+			(xy 181.61 69.85) (xy 181.61 80.01)
 		)
 		(stroke
 			(width 0)
 			(type default)
 		)
-		(uuid "03505c41-403a-4937-932d-7ccd9d92b48b")
-	)
-	(wire
-		(pts
-			(xy 191.77 82.55) (xy 180.34 82.55)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "12f53859-0e3f-436f-be40-312872044261")
+		(uuid "02601257-0291-439b-a8c7-02e79ba362b9")
 	)
 	(wire
 		(pts
@@ -2279,6 +3041,16 @@
 			(type default)
 		)
 		(uuid "14ec44c4-f4ad-488e-9d8e-ccdeaebb3992")
+	)
+	(wire
+		(pts
+			(xy 180.34 82.55) (xy 181.61 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "14fc6888-f157-4e55-872b-b1fff9ef3a45")
 	)
 	(wire
 		(pts
@@ -2319,16 +3091,6 @@
 			(type default)
 		)
 		(uuid "26a51d08-6bf2-4f48-8eb1-72b2cc141873")
-	)
-	(wire
-		(pts
-			(xy 181.61 80.01) (xy 181.61 69.85)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "2ef55de7-7d08-4e6e-9219-9d4af43ce2c3")
 	)
 	(wire
 		(pts
@@ -2562,6 +3324,16 @@
 	)
 	(wire
 		(pts
+			(xy 189.23 82.55) (xy 191.77 82.55)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0dbe667-9907-4061-bca7-9925410c2b28")
+	)
+	(wire
+		(pts
 			(xy 193.04 86.36) (xy 200.66 86.36)
 		)
 		(stroke
@@ -2579,6 +3351,16 @@
 			(type default)
 		)
 		(uuid "a3e00143-8bbc-4362-8f20-560536d4ab92")
+	)
+	(wire
+		(pts
+			(xy 189.23 80.01) (xy 193.04 80.01)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a83e4bcf-0883-4171-9caa-d94f0896e9bb")
 	)
 	(wire
 		(pts
@@ -3072,6 +3854,7 @@
 		)
 	)
 	(symbol
+		(lib_name "Conn_01x05_Socket_2")
 		(lib_id "Connector:Conn_01x05_Socket")
 		(at 198.12 54.61 0)
 		(unit 1)
@@ -3224,6 +4007,76 @@
 			(project ""
 				(path "/bd96de00-d7fe-4095-9be4-fc1fde628ce9"
 					(reference "J1001")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 185.42 82.55 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "38e7573d-feb7-42fc-bd66-5b23829f572c")
+		(property "Reference" "JP1002"
+			(at 185.42 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 185.42 78.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.42 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 185.42 82.55 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "1113c1f3-1852-4fd7-ab7e-1030bc9974b9")
+		)
+		(pin "2"
+			(uuid "821182f9-eed6-4db4-8139-036fa997ca85")
+		)
+		(instances
+			(project "testcircuit"
+				(path "/bd96de00-d7fe-4095-9be4-fc1fde628ce9"
+					(reference "JP1002")
 					(unit 1)
 				)
 			)
@@ -3790,6 +4643,7 @@
 		)
 	)
 	(symbol
+		(lib_name "Conn_01x05_Socket_1")
 		(lib_id "Connector:Conn_01x05_Socket")
 		(at 198.12 69.85 0)
 		(unit 1)
@@ -3863,6 +4717,76 @@
 			(project "testcircuit"
 				(path "/bd96de00-d7fe-4095-9be4-fc1fde628ce9"
 					(reference "J1003")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Jumper:SolderJumper_2_Open")
+		(at 185.42 80.01 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "b31493e0-3df1-45fd-801d-7a8518c040b1")
+		(property "Reference" "JP1001"
+			(at 185.42 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "SolderJumper_2_Open"
+			(at 185.42 76.2 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Footprint" ""
+			(at 185.42 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 185.42 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Solder Jumper, 2-pole, open"
+			(at 185.42 80.01 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "03583c41-db0a-4b97-8eea-d6636c62533f")
+		)
+		(pin "2"
+			(uuid "7f5b7407-8200-47e5-b9a2-46f8cc1a36be")
+		)
+		(instances
+			(project ""
+				(path "/bd96de00-d7fe-4095-9be4-fc1fde628ce9"
+					(reference "JP1001")
 					(unit 1)
 				)
 			)
@@ -4069,15 +4993,15 @@
 	(symbol
 		(lib_id "Device:R_US")
 		(at 184.15 87.63 90)
+		(mirror x)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "f0ad5967-d60a-45ef-9a75-127892e7e839")
 		(property "Reference" "R1001"
-			(at 184.15 81.28 90)
+			(at 184.15 93.98 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4085,7 +5009,7 @@
 			)
 		)
 		(property "Value" "2K"
-			(at 184.15 83.82 90)
+			(at 184.15 91.44 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -4093,7 +5017,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 184.404 86.614 90)
+			(at 184.404 88.646 90)
 			(effects
 				(font
 					(size 1.27 1.27)
