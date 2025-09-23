@@ -83,16 +83,57 @@ void send() {
 }
 
 void setup_timer() {
-  const uint32_t oc = F_CPU / 256 / SOFT_BAUD / SUBSAMPLE;
+  // To be honest, it took me a long while to figure out why I had to use a
+  // constant of 532 when the clock frequency is 8MHz to get the timing right.
+  // It was derived via experimentation. I want a 1200Hz timer (300 baud * quad
+  // subsampling), the clock should be 8MHz from the datasheet, and I'm setting
+  // the divisor to 64, so it should be 8000000 / 64 / 300 / 4.
+  //
+  // Here's what I would expect:
+  //
+  //   1sec/1200symbols
+  //     .00083333333333333333 sec / symbol
+  //   (8000000 cycles / sec) / (64 cycles / tick) / (1200 symbols / sec)
+  //     104.16666666666666666666 ticks / symbol
+  //   (104 ticks / symbol) * (64 cycles / tick) / (8000000 cycles / sec)
+  //     .00083200000000000000 sec / symbol
+  //
+  // but, if we do the math as is:
+  //
+  //   (8000000 cycles / sec) / (532 cycles / tick) / (1200 symbols / sec)
+  //     12.53132832080200501253 ticks / symbol
+  //
+  // If we take that number, use the clock divisor I'm setting, and the
+  // toggle time of a pin toggled on that timer, then
+  //
+  //   12 (ticks / symbol) * (64 cycles / tick) / (.00084 sec / symbol)
+  //     914285.71428571428571428571 cycles / sec
+  //
+  // which is just under 1MHz. But the chip has an 8MHz internal oscilator
+  // according to the datasheet, so why is it running at 1/8th that speed?
+  //
+  // After rereading the datasheet, I noticed §6.3 "System Clock Prescaler".
+  // Then, following that to §6.5.2 "CLKPSR – Clock Prescale Register" I saw
+  // it -- a default clock division factor of 8.
+  //
+  // RTFM kids.
+
+  const uint32_t oc = F_CPU / 64 / SOFT_BAUD / SUBSAMPLE;
   _Static_assert(oc < 256, "SOFT_BAUD too high");
   _Static_assert(oc != 0, "SOFT_BAUD too low");
   OCR0A = (uint8_t)(oc & 0xff);
   TCNT0 = 0;
-  // Wave Form Generation Mode 2: CTC
-  // Toggle PD6 on compare match
-  TCCR0A |= (1 << COM0A0) | (1 << WGM01);
-  // prescaler = 256
-  TCCR0B |= (1 << CS02);
+  // Wave Form Generation Mode 2: CTC ( COM0A0=1 COM0A1=0)
+  // Toggle OC0A/PB2 on compare match (WGM01=1)
+  TCCR0A |= (1 << COM0A0) | (0 << WGM01);
+  // CS02 CS01 CS00 Description
+  // 0    0    0 No clock source (Timer/Counter stopped)
+  // 0    0    1 clkI/O/(No prescaling)
+  // 0    1    0 clkI/O/8 (From prescaler)
+  // 0    1    1 clkI/O/64 (From prescaler)
+  // 1    0    0 clkI/O/256 (From prescaler)
+  // 1    0    1 clkI/O/1024 (From prescaler)
+  TCCR0B |= (0 << CS02) | (1 << CS01) | (1 << CS00);
 }
 
 uint8_t timer_tick() {

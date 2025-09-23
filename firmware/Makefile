@@ -1,5 +1,5 @@
 MCU     ?= attiny20
-SPEED   ?= 8000000L
+SPEED   ?= 1000000L
 CC      = avr-gcc
 CFLAGS = -Os -flto -mmcu=$(MCU) -DF_CPU=$(SPEED) -ffixed-r2 -g
 OUTDIR=build
@@ -19,4 +19,4 @@ disasm: $(TARGET)
 	avr-objdump -g -l -S -d $^ | less
 
 clean:
-	rm -f $(OUTDIR)/*
+	rm -rf $(OUTDIR)/*

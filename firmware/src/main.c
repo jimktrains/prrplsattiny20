@@ -14,11 +14,10 @@
 
 // #define F_CPU 8000000
 
-#define SOFT_BAUD 4800
+#define SOFT_BAUD 300
 #define RX_PIN PB0
 #define TX_PIN PB1
 #include "./soft_uart.h"
-
 
 #define EP_A PA5
 #define EP_B PA6
@@ -67,8 +66,14 @@
 #define APPR_ASP (APPR_1_FLAG | APPR_2_FLAG | CENTER_FLAG)
 #define CLEAR_ASP (CLEAR_1_FLAG | CLEAR_2_FLAG | CENTER_FLAG)
 
-const uint8_t PROGMEM lightidx[7] = {STOP_1, STOP_2, APPR_1, APPR_2,
-                                     CLEAR_1,  CLEAR_2,  CENTER};
+const uint8_t PROGMEM lightidx[7] = {STOP_1,  STOP_2,  APPR_1, APPR_2,
+                                     CLEAR_1, CLEAR_2, CENTER};
+
+#define INIT_SEQ_LEN 10
+const uint8_t PROGMEM init_seq[INIT_SEQ_LEN] = {
+    STOP_ASP,     APPR_ASP,    CLEAR_ASP,   STOP_2_FLAG,  APPR_1_FLAG,
+    CLEAR_2_FLAG, STOP_1_FLAG, APPR_2_FLAG, CLEAR_1_FLAG, CENTER_FLAG};
+
 uint8_t lightson = ALLOFF;
 uint8_t cur_light_bit = 6;
 
@@ -101,6 +106,9 @@ void update_lights() {
   }
 }
 
+#define TOGGLE_TX_ON_TIMER 0
+#define CYCLE_ASPECTS_ONLY 0
+
 int main(void) {
   // Init LEDs Off
   light_led(ALLOFF);
@@ -112,27 +120,46 @@ int main(void) {
 
   // Set DDR for Rx and Tx Pins
   DDRB |= ((0 << RX_PIN) | (1 << TX_PIN));
+  // UART lines are pulled high by default
+  PORTB |= (1 << TX_PIN);
 
   lightson = STOP_ASP;
 
   // I'm looping instead of using an interrupt because at 300 baud @ 4x
   // subsamples I only have something like 6600 cycles.
-  //     8000000/4/300
-  //     6666.66666666666666666666
-  // At 1200 baud that's only around 1600 cycles.
+  //     (1000000 cycles / sec) / (1200 symbols / sec)
+  //       833 cycles / symbol
+  // At 1200 baud that's only around 208 cycles.
   //
   // Since before writing any of this I was unsure of exactly how long the
   // soft uart and LED charliplexing routines will take, I decided to just
   // put everything into one large loop in order to not have the overhead
   // of jumping to and out of the interrupt. It's probably a bit of a
   // needless "optimization", but it's what I have and have tested.
+
+  if (CYCLE_ASPECTS_ONLY) {
+    uint16_t cycle_count = 0;
+    uint16_t cycle_stage = 0;
+  }
   while (1) {
     if (timer_tick()) {
-      // PORTB ^= (1 << TX_PIN);
       update_lights();
 
+      if (CYCLE_ASPECTS_ONLY) {
+        cycle_count++;
+        if ((x & 0x1ff) == 0x1ff) {
+          cycle_stage++;
+          lightson = init_seq[cycle_stage % INIT_SEQ_LEN];
+        }
+      }
+
       listen();
-      send();
+
+      if (TOGGLE_TX_ON_TIMER) {
+        PORTB ^= (1 << TX_PIN);
+      } else {
+        send();
+      }
 
       if (new_next_to_tx && tx_ccount == 0) {
         new_next_to_tx = 0;
@@ -145,23 +172,25 @@ int main(void) {
         // retransmit it.
         if (last_recv_packet_start) {
           last_recv_packet_start = 0;
-          if (last_recv == 'S') {
-            lightson = STOP_ASP;
-          } else if (last_recv == 'A') {
-            lightson = APPR_ASP;
-          } else if (last_recv == 'C') {
-            lightson = CLEAR_ASP;
-          } else if (last_recv >= 0x80) {
-            lightson = last_recv;
-          } else {
-            lightson = ALLOFF;
+          if (!CYCLE_ASPECTS_ONLY) {
+            if (last_recv == 'S') {
+              lightson = STOP_ASP;
+            } else if (last_recv == 'A') {
+              lightson = APPR_ASP;
+            } else if (last_recv == 'C') {
+              lightson = CLEAR_ASP;
+            } else if (last_recv >= 0x80) {
+              lightson = last_recv;
+            } else {
+              lightson = ALLOFF;
+            }
           }
         } else {
           if (last_recv == '!') {
             last_recv_packet_start = 1;
           }
           new_next_to_tx = 1;
-          next_to_tx = 0xaa; // last_recv;
+          next_to_tx = last_recv;
         }
       }
     }
