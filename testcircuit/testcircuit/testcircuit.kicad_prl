@@ -1,11 +1,11 @@
 {
   "board": {
-    "active_layer": 2,
-    "active_layer_preset": "All Layers",
-    "auto_track_width": false,
+    "active_layer": 0,
+    "active_layer_preset": "",
+    "auto_track_width": true,
     "hidden_netclasses": [],
     "hidden_nets": [],
-    "high_contrast_mode": 1,
+    "high_contrast_mode": 0,
     "net_color_mode": 1,
     "opacity": {
       "images": 0.6,
@@ -45,6 +45,7 @@
       "pads",
       "zones",
       "drc_warnings",
+      "drc_exclusions",
       "locked_item_shadows",
       "conflict_shadows",
       "shapes"
@@ -58,7 +59,7 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "prrplsattiny20.kicad_prl",
+    "filename": "testcircuit.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
