@@ -58,11 +58,12 @@ arranging the lights in a sensible order I am able to have them on with
 100% duty cycle for the 3 basic aspects these display (Stop, Clear, and
 Approach). For those aspects I think the current brightness is adequate.
 
-The design is fairly simple, and using 4 layers (Signal, +5V+Minimal Signal,
-GND, Signal) made routing easier.
 
 Schematics / PCB
 ================
+
+The design is fairly simple, and using 4 layers (Signal, +5V+Minimal Signal,
+GND, Signal) made routing easier.
 
 ### Individual Schematic
 
