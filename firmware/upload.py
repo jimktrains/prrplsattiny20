@@ -21,6 +21,7 @@ ser = serial.Serial(
 if not ser.isOpen():
     raise "Not open!"
 
+# Reset the arduino so we start in a known state
 ser.dtr = True
 time.sleep(0.5)
 ser.dtr = False
@@ -62,13 +63,13 @@ if True:
         if xx == "Done":
             break
 
-ser.write(b's')
-x = None
-while x != '\n':
-    x = ser.read(1).decode('ascii')
-    if len(x) != 0:
-        print(x, end="", flush=True)
-input("Go to console")
+#ser.write(b's')
+#x = None
+#while x != '\n':
+#    x = ser.read(1).decode('ascii')
+#    if len(x) != 0:
+#        print(x, end="", flush=True)
+#input("Go to console")
 
 key = None
 def console(win):
@@ -97,4 +98,4 @@ def console(win):
                 pass
             else:
                 raise e
-curses.wrapper(console)
+#curses.wrapper(console)

@@ -17,7 +17,8 @@
 #define SOFT_BAUD 300
 #define RX_PIN PB0
 #define TX_PIN PB1
-#include "./soft_uart.h"
+// #include "./soft_uart.h"
+#include "./dman.h"
 
 #define EP_A PA5
 #define EP_B PA6
@@ -201,11 +202,11 @@ int main(void) {
         if (last_recv_packet_start) {
           last_recv_packet_start = 0;
           if (!CYCLE_ASPECTS_ONLY) {
-            if (last_recv == 'S') {
+            if (last_recv == 'S' || last_recv == 0x03) {
               lightson = STOP_ASP;
-            } else if (last_recv == 'A') {
+            } else if (last_recv == 'A' || last_recv == 0x02) {
               lightson = APPR_ASP;
-            } else if (last_recv == 'C') {
+            } else if (last_recv == 'C' || last_recv == 0x01) {
               lightson = CLEAR_ASP;
             } else if (last_recv >= 0x80) {
               lightson = last_recv;
@@ -214,11 +215,12 @@ int main(void) {
             }
           }
         } else {
-          if (last_recv == '!') {
-            last_recv_packet_start = 1;
-          }
           new_next_to_tx = 1;
           next_to_tx = last_recv;
+        }
+
+        if (last_recv == '!' || last_recv == 0x04) {
+          last_recv_packet_start = 1;
         }
       }
     }

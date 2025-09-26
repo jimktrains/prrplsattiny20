@@ -6,7 +6,7 @@
 #include <stdint.h>
 #include <avr/io.h>
 
-#define SUBSAMPLE_LN2   2
+#define SUBSAMPLE_LN2   3
 #define SUBSAMPLE   (1 << SUBSAMPLE_LN2)
 
 uint8_t recv_ccount = 0;
@@ -23,6 +23,8 @@ uint8_t next_to_tx = 0;
 uint8_t new_next_to_tx = 0;
 
 
+uint8_t sample_count = 0;
+
 void listen() {
   uint8_t pb4 = (PINB & (1 << RX_PIN)) ? 1 : 0;
 
@@ -35,12 +37,17 @@ void listen() {
     recv_ccount++;
     uint8_t bit_idx = (recv_ccount >> SUBSAMPLE_LN2);
     uint8_t cycle_idx = (recv_ccount & (SUBSAMPLE - 1));
-    // Grab the second sample so that we know we're not on a transition.
-    if ((SUBSAMPLE / 2) == cycle_idx) {
+    if (cycle_idx == 0) {
+      sample_count = pb4;
+    } else {
+      sample_count += pb4;
+    }
+    if ((SUBSAMPLE - 1) == cycle_idx) {
       // Ignore the stop and stop bits
       if (1 < bit_idx && bit_idx < 10) {
         recv_buf >>= 1;
-        recv_buf |= (pb4 << 7);
+        recv_buf |= ((sample_count > (SUBSAMPLE / 2)) << 7);
+        // recv_buf |= (pb4 << 7);
         if (9 == bit_idx) {
           last_recv = recv_buf;
           new_last_recv = 1;
@@ -118,8 +125,7 @@ void setup_timer() {
   //
   // RTFM kids.
 
-  // The -1 is because it was a little too off otherwise.
-  const uint32_t oc = (F_CPU / 64 / SOFT_BAUD / SUBSAMPLE) - 1;
+  const uint32_t oc = (F_CPU / 64 / SOFT_BAUD / SUBSAMPLE);
   _Static_assert(oc < 256, "SOFT_BAUD too high");
   _Static_assert(oc != 0, "SOFT_BAUD too low");
   OCR0A = (uint8_t)(oc & 0xff);

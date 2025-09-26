@@ -24,13 +24,19 @@ scale model.
 
 I've designed the system to use 3 wires: +5V, Ground, and Serial. Serial
 data comes in, the first command extracted, and then the remainder of a packet
-is retransmitted similar to how WS2812b / NeoPixels work. A packet starts with
-an ASCII '!' (0x41) followed a sequence of 'S' (0x53) for Stop, 'A' (0x41) for
-Approach, and 'C' (0x43) for Clear, 'O' (0x4F) for all lights off, and anything
-above 0x80 to control the individual lights. (Invalid characters will turn
-all lights off.) I'm currently planning to use a software UART at 300baud.
+is retransmitted similar to how WS2812b / NeoPixels work. 
 
+The serial protocol is 
+[Differential Manchester](https://en.m.wikipedia.org/wiki/Differential_Manchester_encoding)
+, but kind of overlayed on
+a double-baud UART frame, so it always starts with the "0" stop bit.
 
+I moved to this from just a plain software UART as the timing on some of my
+signals was off by a large enough amount to throw everything out of sync.
+Decoding the differential Manchester packet is much less timing-sensetive.
+
+A packet starts with an 0x4 followed a sequence of 0x3 for Stop, 0x2 for
+Approach, and 0x1 for Clear, 0x0 for all lights off.
 
 Schematics / PCB
 ================

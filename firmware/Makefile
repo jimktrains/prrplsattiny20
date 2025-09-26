@@ -20,3 +20,6 @@ disasm: $(TARGET)
 
 clean:
 	rm -rf $(OUTDIR)/*
+
+upload:
+	./upload.py $(TARGET_HEX)
