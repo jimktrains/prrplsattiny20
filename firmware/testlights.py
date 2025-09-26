@@ -170,4 +170,4 @@ for i in range(len(asp)):
             print(r, end="", flush=True)
     print("")
 
-    time.sleep(1)
+    #time.sleep(1)

@@ -9,7 +9,7 @@ In Action!
 ![In The Dark](in-the-dark.gif)
 ![Close Up](closeup.gif)
 
-The Pennsylvania Railroad (PRR), almost uniquly among railroads, used
+The Pennsylvania Railroad (PRR), almost uniquely among railroads, used
 Position Light Signals (PLS) 
 [[1]](https://en.wikipedia.org/wiki/North_American_railroad_signals#Position_light_signals)
 [[2]](https://railroadsignals.us/signals/pl/pl.htm). (The Norfolk & Western
@@ -26,17 +26,34 @@ I've designed the system to use 3 wires: +5V, Ground, and Serial. Serial
 data comes in, the first command extracted, and then the remainder of a packet
 is retransmitted similar to how WS2812b / NeoPixels work. 
 
+Protocol
+========
+
 The serial protocol is 
 [Differential Manchester](https://en.m.wikipedia.org/wiki/Differential_Manchester_encoding)
-, but kind of overlayed on
+, but kind of overlaid on
 a double-baud UART frame, so it always starts with the "0" stop bit.
 
 I moved to this from just a plain software UART as the timing on some of my
 signals was off by a large enough amount to throw everything out of sync.
-Decoding the differential Manchester packet is much less timing-sensetive.
+Decoding the differential Manchester packet is much less timing-sensitive.
+It runs at 300baud/150bps with 4-bit packets.
 
 A packet starts with an 0x4 followed a sequence of 0x3 for Stop, 0x2 for
 Approach, and 0x1 for Clear, 0x0 for all lights off.
+
+![Protocol Example](protocol-example.png)
+
+In this example, the controller sends out a 4-frame packet. Starting with a SOP (Start of Packet) frame, followed
+by an Approach, then Stop, then All Off. The first signal dutifully forwards
+the SOP frame. The second frame is for it, though, so it does not forward 
+that one. The rest of the frames are for subsequent signals, so it forwards
+all subsequent frames until a SOP is encountered again. The second signal
+does as the first. It forwards the SOP, keeps the frame following the SOP,
+and forwards any remaining frames until another SOP is encountered.
+
+(The visualization is from PulseView/sigrok. I wrote a custom protocol
+decoder to help me debug.)
 
 Schematics / PCB
 ================
@@ -62,7 +79,7 @@ mean that signals visibility near each other may be of different brightness,
 but so far it doesn't appear to be a noticeable issue.
 
 The limited brightness is a potential problem, but I'm going to try up the
-effective PWM duty cycle. If each light is updated sequentually at the
+effective PWM duty cycle. If each light is updated sequentially at the
 frequency at which the RX pin is sampled spread over the 7 lights -- 
 currently 1200Hz with a 1/7 (14%) duty cycle. Because the LEDs are
 charliplexed I am limited in which LEDs I could turn on simultaneously.
@@ -83,7 +100,7 @@ individually by charlieplexing them.
 
 I used a 1.27mm pitch SOIC chip clip as my connectorless connector. (I did
 manage to make the through-holes a little too small, so it doesn't attach
-as securly as I would have liked.) Eventually I just soldered some THT
+as securely as I would have liked.) Eventually I just soldered some THT
 resistor legs to these to connect to a breadboard for some of the signal
 heads.
 
