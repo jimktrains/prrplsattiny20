@@ -52,6 +52,11 @@ all subsequent frames until a SOP is encountered again. The second signal
 does as the first. It forwards the SOP, keeps the frame following the SOP,
 and forwards any remaining frames until another SOP is encountered.
 
+Also, note how when interpreted as a UART, the packets coming from the signals
+isn't in sync with the baudrate. I'm sure that there's some way to get a more
+stable clock on the μC, but it was significantly easier for me to switch to a
+more forgiving line coding. 
+
 (The visualization is from PulseView/sigrok. I wrote a custom protocol
 decoder to help me debug.)
 
