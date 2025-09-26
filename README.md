@@ -136,8 +136,8 @@ Programming and Testing
 ========================
 
 Here is how I test and program these modules. The Arduino is running [this
-sketch](tpi_programmer/) from (Junk +
-Arduino)[https://junkplusarduino.blogspot.com/p/attiny10-resources.html]. I
+sketch](tpi_programmer/) from [Junk +
+Arduino](https://junkplusarduino.blogspot.com/p/attiny10-resources.html). I
 added a software serial console to it to make testing easier. The FT232RL in
 the schematic is actually a breakout board that provides the +5V.
 
