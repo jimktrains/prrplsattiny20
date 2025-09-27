@@ -108,7 +108,7 @@ x = b"\x00"
 x = inttodman[0x0]
 y = x
 
-delay = (1.0 / 300.0) * 40
+delay = (1.0 / 300.0) * 20
 print(delay)
 
 sop = b"!"

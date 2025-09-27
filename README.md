@@ -57,6 +57,10 @@ isn't in sync with the baudrate. I'm sure that there's some way to get a more
 stable clock on the μC, but it was significantly easier for me to switch to a
 more forgiving line coding. 
 
+There also needs to be at least a 20 symbol pause between frames sent. I 
+think this has to do with how I decode the frame, but it deserves to be
+looked at.
+
 (The visualization is from PulseView/sigrok. I wrote a custom protocol
 decoder to help me debug.)
 
@@ -145,3 +149,9 @@ the schematic is actually a breakout board that provides the +5V.
 
 My next step is to use 38 gauge (40mil (0.1007mm) diameter) enameled wire to
 wire the signals into a wayside signal on a post, and then a signal bridge.
+
+Please excuse my soldering. This is back of what was in the video above.
+Just a proof of concept that the enamel wire will work. (Well, more that
+I can make it work, e.g. strip it without breaking it and soldering it.)
+
+![with enamel wires](with-enamel-wire.jpg)
