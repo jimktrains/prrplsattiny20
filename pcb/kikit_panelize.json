@@ -1,0 +1,23 @@
+{
+    "layout": {
+        "hspace": "2mm",
+        "vspace": "2mm",
+        "rows": "5",
+        "cols": "5",
+        "vbonecut": "False",
+        "hbonecut": "False"
+    },
+    "tabs": {
+        "vwidth": "1mm",
+        "hwidth": "1mm",
+        "spacing": "5mm",
+        "fillet": "2mm"
+    },
+    "framing": {
+        "type": "tightframe",
+        "width": "2mm"
+    },
+    "post": {
+        "millradius": "1mm"
+    }
+}

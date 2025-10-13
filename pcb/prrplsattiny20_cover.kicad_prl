@@ -32,7 +32,6 @@
       "vias",
       "footprint_text",
       "footprint_anchors",
-      "ratsnest",
       "grid",
       "footprints_front",
       "footprints_back",
@@ -45,6 +44,7 @@
       "pads",
       "zones",
       "drc_warnings",
+      "drc_exclusions",
       "locked_item_shadows",
       "conflict_shadows",
       "shapes"
@@ -58,11 +58,13 @@
     "ssh_key": ""
   },
   "meta": {
-    "filename": "prrplsattiny20_panel_panel.kicad_prl",
+    "filename": "prrplsattiny20_cover.kicad_prl",
     "version": 5
   },
   "net_inspector_panel": {
     "col_hidden": [
+      false,
+      false,
       false,
       false,
       false,
@@ -84,9 +86,13 @@
       6,
       7,
       8,
-      9
+      9,
+      10,
+      11
     ],
     "col_widths": [
+      0,
+      0,
       0,
       0,
       0,
