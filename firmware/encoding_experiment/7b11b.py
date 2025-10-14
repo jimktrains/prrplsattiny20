@@ -145,6 +145,7 @@ if check_stop_bit:
 # print(f"#define ENC7b11b_CODEWORD_LENGTH {m}")
 # print(f"#define ENC7b11b_HAS_START_BIT {has_start_bit}")
 # print(f"#define ENC7b11b_HAS_STOP_BIT {has_stop_bit}")
+# print(f"#define ENC7b11b_MAX_RUN {max_run}")
 # print("")
 
 

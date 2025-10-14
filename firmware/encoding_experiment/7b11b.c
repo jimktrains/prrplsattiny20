@@ -1,8 +1,9 @@
 // copyright AGPL3
 
-#include "7b11b.h"
 #include <stdio.h>
 #include <string.h>
+
+#include "7b11b.h"
 #include "7b11bcw.h"
 
 uint8_t enc7b11b_encode(uint8_t b, uint8_t i) {
@@ -62,6 +63,7 @@ uint8_t enc7b11b_finish_decode() {
   uint8_t last_v = 1;
   uint16_t fullcodeword = 0;
   uint8_t shortcodeword;
+  uint8_t total_samples = 0;
 
   memset(runs, 0, sizeof(runs));
   memset(runs_v, 0, sizeof(runs_v));
@@ -76,6 +78,7 @@ uint8_t enc7b11b_finish_decode() {
       if (current_run != 0) {
         runs_v[run_cnt] = last_v;
         runs[run_cnt] = current_run;
+        total_samples += current_run;
         if (current_run < shortest_run) {
           shortest_run = current_run;
         }
@@ -88,10 +91,17 @@ uint8_t enc7b11b_finish_decode() {
   }
   printf("\n");
 
-
   printf("shortest_run=%d\n", shortest_run);
-  for (uint8_t i = 0, j =0; i < run_cnt; i++) {
-    uint8_t bits_in_run = runs[i]/shortest_run;
+  uint8_t average_samples_per_bit = 10*total_samples / ENC7b11b_CODEWORD_LENGTH;
+  printf("samples/bit=10*%d/%d=%d\n", total_samples, ENC7b11b_CODEWORD_LENGTH,
+         average_samples_per_bit);
+  for (uint8_t i = 0, j = 0; i < run_cnt; i++) {
+    uint8_t bits_in_run = ((10 * runs[i]) + (average_samples_per_bit/2) + 1) / average_samples_per_bit;
+    if (bits_in_run > ENC7b11b_MAX_RUN) {
+      bits_in_run = ENC7b11b_MAX_RUN;
+    } else if (bits_in_run < 1) {
+      bits_in_run = 1;
+    }
     for (uint8_t k = 0; k < bits_in_run; k++, j++) {
       fullcodeword |= (runs_v[i] << j);
     }
@@ -101,7 +111,7 @@ uint8_t enc7b11b_finish_decode() {
 
   printf("fullcw=");
   for (uint8_t i = 0; i < ENC7b11b_CODEWORD_LENGTH; i++) {
-    uint8_t t = (fullcodeword& (1 << i)) ? 1 : 0;
+    uint8_t t = (fullcodeword & (1 << i)) ? 1 : 0;
     printf("%d", t);
   }
   printf("\nshortcw=");
