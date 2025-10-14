@@ -1,9 +1,9 @@
 // copyright AGPL3
 
 #include "7b11b.h"
-#include "7b11bcw.h"
 #include <stdio.h>
 #include <string.h>
+#include "7b11bcw.h"
 
 uint8_t enc7b11b_encode(uint8_t b, uint8_t i) {
   // start bit
