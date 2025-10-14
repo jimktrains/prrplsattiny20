@@ -23,6 +23,7 @@ if not ser.isOpen():
     raise "Not open!"
 
 # Reset the arduino so we start in a known state
+print("Toggling DTR")
 ser.dtr = True
 time.sleep(0.5)
 ser.dtr = False
